@@ -3,6 +3,7 @@
     package="com.example.nintendo_eshop">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:fullBackupContent="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -17,6 +18,9 @@
             </intent-filter>
 
         </activity>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

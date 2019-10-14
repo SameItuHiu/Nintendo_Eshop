@@ -10,4 +10,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="H1Coffe">Sometimes, we run out of coffee while working on this app</string>
     <string name="descoffe">Good thing is you can help up stock more coffee so we can keep working on more stuff by donating to us</string>
+    <string name="todo">TODO</string>
+    <string name="title">Title</string>
+    <string name="category">category</string>
 </resources>
