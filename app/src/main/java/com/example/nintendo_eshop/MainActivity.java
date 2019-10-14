@@ -40,10 +40,7 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        recyclerView=(RecyclerView)findViewById(R.id.main_list);
+        recyclerView = findViewById(R.id.main_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         gameItem = new ArrayList<>();
@@ -97,7 +94,7 @@ public class MainActivity extends AppCompatActivity{
 
             GameItem gameList = new GameItem();
 
-            JSONObject json = null;
+            JSONObject json;
             try {
                 json = array.getJSONObject(i);
 
