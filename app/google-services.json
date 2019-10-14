@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "426844199107",
+    "firebase_url": "https://nintendoeshop-3bd8f.firebaseio.com",
+    "project_id": "nintendoeshop-3bd8f",
+    "storage_bucket": "nintendoeshop-3bd8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426844199107:android:cfc3c59234e8865215aa76",
+        "android_client_info": {
+          "package_name": "com.example.nintendo_eshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426844199107-a7kjkgn9cpqvj69obrqefi2etjgkrfr2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nintendo_eshop",
+            "certificate_hash": "ad33e95f0a7549f5b09828a81f38dac48bec70f1"
+          }
+        },
+        {
+          "client_id": "426844199107-rv32j4ole8v9vgdbc91u9873243m5lpi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLc7pTFh9vf7ob8LrgVemCUh76grmUsa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426844199107-rv32j4ole8v9vgdbc91u9873243m5lpi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
