@@ -41,7 +41,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
 
         holder.textTitle.setText(game.getTitle());
         holder.textCategories.setText(String.valueOf(game.getCategories()));
-        Glide.with(context).load("http:" + game.getImage()).into(holder.image);
+        Glide.with(context).load("https:" + game.getImage()).into(holder.image);
         //Picasso.get().load(game.getImage()).into(holder.image);
 
     }
