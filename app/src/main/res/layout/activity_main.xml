@@ -7,31 +7,6 @@
     tools:context=".MainActivity"
     android:background="#fff"
     android:orientation="vertical">
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-<!--        <com.google.android.material.tabs.TabLayout-->
-<!--            android:id="@+id/tabLayout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:tabMode="fixed"-->
-<!--            app:tabGravity="fill"-->
-<!--            app:tabIndicatorFullWidth="false"-->
-<!--            app:tabIndicator="@drawable/shape_indicator"/>-->
-    </com.google.android.material.appbar.AppBarLayout>
-
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/viewPager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:paddingLeft="8dp"-->
-<!--        android:paddingRight="8dp"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_list"

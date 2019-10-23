@@ -1,7 +1,6 @@
 package com.example.nintendo_eshop;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,10 +26,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
-    BottomSheetDialog dialog;
+    BottomSheetDialog donate,viewGame;
 
     RecyclerView recyclerView;
-    RecyclerView.Adapter adapter;
+    ListViewAdapter adapter;
     List<GameItem> gameItem;
     String URL_Data="https://api.esho.pw/games";
     RequestQueue reqQue;
@@ -46,29 +45,11 @@ public class MainActivity extends AppCompatActivity{
         gameItem = new ArrayList<>();
 
         loadurl();
-//        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-//        tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorPrimaryDark));
-
-        // find views by id
-//        ViewPager viewPager = findViewById(R.id.viewPager);
-
-        // attach tablayout with viewpager
-//        tabLayout.setupWithViewPager(viewPager);
-
-//        adapter adapter = new adapter(getSupportFragmentManager());
-
-        // add your fragments
-//        adapter.addFrag(new NewRelease(), "New Release");
-//        adapter.addFrag(new OnSale(), "On Sale");
-//        adapter.addFrag(new AllGame(), "All Game");
-
-        // set adapter on viewpager
-//        viewPager.setAdapter(adapter);
 
     }
 
     public void loadurl() {
-        JsonArrayRequest stringRequest=new JsonArrayRequest(URL_Data, new Response.Listener<JSONArray>() {
+        JsonArrayRequest stringRequest = new JsonArrayRequest(URL_Data, new Response.Listener<JSONArray>() {
 
             @Override
             public void onResponse(JSONArray response) {
@@ -84,7 +65,6 @@ public class MainActivity extends AppCompatActivity{
         });
 
         reqQue = Volley.newRequestQueue(this);
-
         reqQue.add(stringRequest);
     }
 
@@ -98,11 +78,8 @@ public class MainActivity extends AppCompatActivity{
             try {
                 json = array.getJSONObject(i);
 
-
                 gameList.setTitle(json.getString("Title"));
-
                 gameList.setCategories(json.getString("Categories"));
-
                 gameList.setImage(json.getString("Image"));
 
             } catch (JSONException e) {
@@ -111,10 +88,18 @@ public class MainActivity extends AppCompatActivity{
             }
             gameItem.add(gameList);
         }
-
         adapter = new ListViewAdapter(this, gameItem);
-
         recyclerView.setAdapter(adapter);
+
+        adapter.setOnItemClickCallback(new ListViewAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(GameItem data) {
+                View view = getLayoutInflater().inflate(R.layout.bot_nav_view_game, null);
+                viewGame = new BottomSheetDialog(MainActivity.this);
+                viewGame.setContentView(view);
+                viewGame.show();
+            }
+        });
     }
 
     @Override
@@ -129,10 +114,10 @@ public class MainActivity extends AppCompatActivity{
             case R.id.Currency:
                 item.collapseActionView();
             case R.id.Donate:
-                View view = getLayoutInflater().inflate(R.layout.popup, null);
-                dialog = new BottomSheetDialog(this);
-                dialog.setContentView(view);
-                dialog.show();
+                View view = getLayoutInflater().inflate(R.layout.bot_nav_donate, null);
+                donate = new BottomSheetDialog(this);
+                donate.setContentView(view);
+                donate.show();
         }
         return super.onOptionsItemSelected(item);
     }

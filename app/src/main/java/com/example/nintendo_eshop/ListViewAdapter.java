@@ -4,17 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHolder> {
@@ -22,6 +18,7 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     private Context context;
     private LayoutInflater inflater;
     private List<GameItem> list;
+    private OnItemClickCallback onItemClickCallback;
 
     public ListViewAdapter(Context context, List<GameItem> list) {
         this.context = context;
@@ -36,14 +33,19 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         GameItem game = list.get(position);
 
         holder.textTitle.setText(game.getTitle());
         holder.textCategories.setText(String.valueOf(game.getCategories()));
         Glide.with(context).load("https:" + game.getImage()).into(holder.image);
-        //Picasso.get().load(game.getImage()).into(holder.image);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(list.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -63,5 +65,10 @@ public class ListViewAdapter extends RecyclerView.Adapter<ListViewAdapter.ViewHo
             image = itemView.findViewById(R.id.poster);
         }
     }
-
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
+    public interface OnItemClickCallback {
+        void onItemClicked(GameItem data);
+    }
 }
